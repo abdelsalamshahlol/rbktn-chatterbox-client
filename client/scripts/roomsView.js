@@ -7,6 +7,10 @@ var RoomsView = {
   },
 
   render: function() {
-  }
+  },
 
+  renderRoom: function(room) {
+  	let option = _.template('<option value="<%= room %>"> <%= room %> </option>')({room}); 
+  	RoomsView.$select.append(option);
+  }
 };

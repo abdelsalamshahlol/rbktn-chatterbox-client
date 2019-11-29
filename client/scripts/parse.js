@@ -4,6 +4,15 @@ var Parse = {
 
   create: function(message, successCB, errorCB = null) {
     // todo: save a message to the server
+    console.log(successCB, errorCB, message);
+    $.ajax({
+      type: "POST",
+      url: Parse.server,
+      contentType: 'application/json',
+      data: JSON.stringify(message),
+      sucess: (msg) => alert(msg)
+    })
+
   },
 
   readAll: function(successCB, errorCB = null) {
