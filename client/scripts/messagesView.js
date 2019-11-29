@@ -5,14 +5,19 @@ var MessagesView = {
   initialize: function() {
   },
 
-  render: function() {
+  render: function(messages) {
+  	// alert(JSON.stringify(messages));
+  	_.each(messages, message => MessagesView.renderMessage(message));
   },
 
   renderMessage: function(message) { // handle unescaped html for XSS
- 	let compiled = _.template(`<div> <strong> <%= username %> </strong> <p> <%= text %> </p> </div>`);
-	let html = compiled(message);
+  	if ('username' in message && 'text' in message){
+	 	let compiled = MessageView.render();
+	 	console.log(compiled(message))
+		let html = compiled(message);
 
-	MessagesView.$chats.prepend(html);
+		MessagesView.$chats.append(html);
+  	}
   }
 
 };
