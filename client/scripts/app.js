@@ -3,6 +3,7 @@ var App = {
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
+  messages: {},
 
   initialize: function() {
     App.username = window.location.search.substr(10);
@@ -10,6 +11,7 @@ var App = {
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
+    Friends.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -19,6 +21,8 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
+      App.messages = data;
+      
       MessagesView.render(data.results);
       // examine the response from the server request:
       console.log(data);

@@ -13,7 +13,6 @@ var MessagesView = {
   renderMessage: function(message) { // handle unescaped html for XSS
   	if ('username' in message && 'text' in message){
 	 	let compiled = MessageView.render();
-	 	console.log(compiled(message))
 		let html = compiled(message);
 
 		MessagesView.$chats.append(html);
