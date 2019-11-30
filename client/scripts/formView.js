@@ -8,8 +8,10 @@ var FormView = {
 
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
+    let input = FormView.find('#message').val();
     event.preventDefault();
 
+    Parse.create(input)
     // alert(message)
     console.log('click!');
   },

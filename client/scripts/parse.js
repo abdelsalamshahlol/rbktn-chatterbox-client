@@ -10,7 +10,10 @@ var Parse = {
       url: Parse.server,
       contentType: 'application/json',
       data: JSON.stringify(message),
-      sucess: (msg) => alert(msg)
+      sucess: (msg) => alert(msg),
+      error: (err) =>{
+        console.warm(err)
+      }
     })
 
   },
