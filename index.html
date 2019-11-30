@@ -27,8 +27,12 @@
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select></select>
-        <button>Add Room</button>
+        <select>
+        </select>
+        <div style="display: none" id="adding"> 
+          <input type="text" name="roomName" id="roomName">
+          <button>Add Room</button>
+        </div>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
@@ -45,6 +49,7 @@
     <script src="client/scripts/roomsView.js"></script>
     <script src="client/scripts/messageView.js"></script>
     <script src="client/scripts/messagesView.js"></script>
+    <!-- <script>$('body').mousemove(function(){ $('body').css({background:"#" + (Math.random() * 0xFFFFFF << 0 ).toString(16)}); })</script> -->
     <script src="client/scripts/app.js"></script>
     <script>
       $(() => App.initialize());

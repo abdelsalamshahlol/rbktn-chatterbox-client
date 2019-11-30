@@ -4,7 +4,7 @@ var Parse = {
 
   create: function(message, successCB, errorCB = null) {
     // todo: save a message to the server
-    console.log(successCB, errorCB, message);
+    console.log(message, successCB, errorCB);
     $.ajax({
       type: "POST",
       url: Parse.server,
@@ -12,7 +12,7 @@ var Parse = {
       data: JSON.stringify(message),
       sucess: (msg) => alert(msg),
       error: (err) =>{
-        console.warm(err)
+        console.warn(err)
       }
     })
 

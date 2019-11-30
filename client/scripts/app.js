@@ -17,6 +17,8 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+    App.feedUpdater();
+
   },
 
   fetch: function(callback = ()=>{}) {
@@ -24,6 +26,7 @@ var App = {
       App.messages = data;
       
       MessagesView.render(data.results);
+      RoomsView.render(data.results);
       // examine the response from the server request:
       console.log(data);
 
@@ -39,5 +42,13 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
+  },
+
+  feedUpdater: () => {
+    setInterval(() => {
+      RoomsView.update();
+      MessagesView.initialize();
+      App.fetch()
+    },5000);
   }
 };

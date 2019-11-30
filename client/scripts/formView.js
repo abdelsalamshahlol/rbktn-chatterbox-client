@@ -8,12 +8,15 @@ var FormView = {
 
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
-    let input = FormView.find('#message').val();
     event.preventDefault();
+    
+    let text = FormView.$form.find('#message');
+    let room = $('#rooms select').val()
+    let username = window.location.search.slice(window.location.search.indexOf('=')+1);
+    let message = Messages.build(text.val(),username,room);
 
-    Parse.create(input)
-    // alert(message)
-    console.log('click!');
+    Parse.create(message, (d)=>{console.log({d})});
+    console.log('click!', message);
   },
 
   setStatus: function(active) {
